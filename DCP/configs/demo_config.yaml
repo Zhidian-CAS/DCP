@@ -1,0 +1,65 @@
+# Demo Configuration
+
+# System Settings
+system:
+  name: "DCP-Demo"
+  version: "1.0.0"
+  debug: true
+  log_level: "INFO"
+
+# Hardware Settings
+hardware:
+  device: "cuda"  # or "cpu"
+  num_workers: 4
+  batch_size: 1
+  pin_memory: true
+
+# Model Settings
+model:
+  # Detection Model
+  detection:
+    name: "faster_rcnn"
+    backbone: "resnet50"
+    pretrained: true
+    num_classes: 2  # background + colony
+    confidence_threshold: 0.5
+    nms_threshold: 0.5
+
+  # Segmentation Model
+  segmentation:
+    name: "segnet"
+    backbone: "resnet50"
+    pretrained: true
+    num_classes: 2  # background + colony
+    attention: true
+
+# Data Settings
+data:
+  demo_dir: "data/demo"
+  image_size: [512, 512]
+  normalize: true
+  augment: false
+
+# Training Settings (for demo purposes)
+training:
+  optimizer: "adam"
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  num_epochs: 1
+  warmup_epochs: 0
+
+# Evaluation Settings
+evaluation:
+  metrics:
+    - "accuracy"
+    - "iou"
+    - "dice"
+  save_predictions: true
+  save_visualizations: true
+
+# Output Settings
+output:
+  save_dir: "results/demo"
+  save_format: "json"
+  save_images: true
+  save_metrics: true 
