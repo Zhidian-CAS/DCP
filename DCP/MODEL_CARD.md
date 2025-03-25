@@ -101,8 +101,8 @@ comparator = SOTAComparator(config_path='configs/sota_models.yaml')
 
 # Compare with SOTA models
 results = comparator.compare_with_sota(
-    model=your_model,
-    model_name="your_model",
+    model=dcpmodel,
+    model_name="dcpmodel",
     sota_name="segnet",
     test_dataloader=test_loader
 )
@@ -139,19 +139,5 @@ results = comparator.compare_with_sota(
 4. Improve online learning mechanism
 
 ### Contact Information
-- Technical Support: support@example.com
 - Issue Reporting: [GitHub Issues](https://github.com/Zhidian-CAS/DCP/issues)
 
-## Citation
-
-If you use this model in your research, please cite:
-
-```
-@software{dcp2024,
-  title = {Digital Colony Picker (DCP)},
-  author = {Your Name},
-  year = {2024},
-  publisher = {GitHub},
-  url = {https://github.com/Zhidian-CAS/DCP}
-}
-``` 
