@@ -1,0 +1,91 @@
+system:
+  root_dir: "./data"
+  log_dir: "./logs"
+  output_dir: "./results"
+  debug: false
+  max_workers: 4
+
+hardware:
+  camera:
+    device_id: 0
+    resolution: [1920, 1080]
+    exposure: -6
+    gain: 1.0
+    auto_focus: true
+  stage:
+    port: "COM3"
+    baudrate: 115200
+    timeout: 1.0
+    step_size: 0.1
+    speed: 10.0
+
+model:
+  # 模型路径
+  detection_model_path: "models/detection.pth"
+  segmentation_model_path: "models/segmentation.pth"
+  classifier_model_path: "models/colony_classifier.joblib"
+  scaler_path: "models/feature_scaler.joblib"
+  pca_path: "models/pca.joblib"
+  
+  # 分类参数
+  feature_importance_threshold: 0.01
+  confidence_threshold: 0.8
+  use_ensemble: true
+  classification_enabled: true
+  
+  # 在线学习参数
+  online_learning:
+    enabled: true
+    min_samples_for_update: 10
+    max_buffer_size: 1000
+    update_interval: 100
+    learning_rate: 0.01
+    batch_size: 32
+    validation_split: 0.2
+    early_stopping_patience: 5
+
+image:
+  # 预处理参数
+  preprocessing:
+    clahe_clip_limit: 2.0
+    clahe_grid_size: [8, 8]
+    gaussian_kernel_size: [5, 5]
+    gaussian_sigma: 1.0
+    
+  # 分割参数
+  segmentation:
+    min_colony_size: 100
+    max_colony_size: 5000
+    min_circularity: 0.7
+    intensity_threshold: 50
+    
+  # 特征提取参数
+  feature_extraction:
+    texture_enabled: true
+    shape_enabled: true
+    glcm_distances: [1, 2]
+    glcm_angles: [0, 45, 90, 135]
+    lbp_scales: [1, 2, 4]
+    gabor_frequencies: [0.1, 0.2, 0.4]
+    gabor_angles: [0, 45, 90, 135]
+
+processing:
+  # 任务处理参数
+  max_retries: 3
+  timeout: 30
+  batch_size: 16
+  
+  # 结果保存参数
+  save_images: true
+  save_masks: true
+  save_features: true
+  compression_level: 9
+  
+  # 质量控制参数
+  quality_control:
+    enabled: true
+    min_colonies: 1
+    max_colonies: 100
+    size_cv_threshold: 0.5
+    intensity_threshold: 50
+    circularity_threshold: 0.7 

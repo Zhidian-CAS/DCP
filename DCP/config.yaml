@@ -1,0 +1,50 @@
+paths:
+  root_dir: "."
+  log_dir: "logs"
+  output_dir: "output"
+  model_dir: "models"
+  config_file: "config.yaml"
+
+system:
+  max_workers: 4
+  buffer_size: 100
+  timeout: 30.0
+  debug: true
+
+camera:
+  device_id: 0
+  frame_width: 1920
+  frame_height: 1080
+  exposure_time: 100
+  gain: 1.0
+  auto_focus: true
+
+stage:
+  port: "COM1"
+  baud_rate: 9600
+  x_range: [0, 100]
+  y_range: [0, 100]
+  z_range: [0, 50]
+  speed: 10
+
+model:
+  detection_model_path: "models/detection.pth"
+  segmentation_model_path: "models/segmentation.pth"
+  classifier_model_path: "models/colony_classifier.joblib"
+  scaler_path: "models/feature_scaler.joblib"
+  pca_path: "models/pca.joblib"
+  feature_importance_threshold: 0.01
+  confidence_threshold: 0.8
+  use_ensemble: true
+  classification_enabled: true
+  online_learning_enabled: true
+  min_samples_for_update: 10
+  max_buffer_size: 1000
+  update_interval: 3600
+
+processing:
+  image_size: [512, 512]
+  normalize: true
+  batch_size: 4
+  num_workers: 2
+  pin_memory: true 

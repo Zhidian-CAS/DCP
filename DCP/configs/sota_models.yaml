@@ -1,0 +1,83 @@
+# SOTA模型配置
+
+# 分割模型
+segnet:
+  name: "SegNet"
+  paper_title: "SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation"
+  authors: ["Vijay Badrinarayanan", "Alex Kendall", "Roberto Cipolla"]
+  year: 2015
+  conference: "IEEE Transactions on Pattern Analysis and Machine Intelligence"
+  metrics:
+    accuracy: 0.964
+    mean_iou: 0.892
+    dice_coefficient: 0.945
+    inference_time: 45.2
+    memory_usage: 1024
+  implementation_url: "https://github.com/pytorch/vision/tree/main/torchvision/models/segmentation"
+  architecture: "Encoder-Decoder with VGG backbone"
+  training_details:
+    optimizer: "Adam"
+    learning_rate: 0.0001
+    batch_size: 4
+    epochs: 100
+
+unet:
+  name: "U-Net"
+  paper_title: "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+  authors: ["Olaf Ronneberger", "Philipp Fischer", "Thomas Brox"]
+  year: 2015
+  conference: "MICCAI"
+  metrics:
+    accuracy: 0.972
+    mean_iou: 0.901
+    dice_coefficient: 0.948
+    inference_time: 38.5
+    memory_usage: 896
+  implementation_url: "https://github.com/milesial/Pytorch-UNet"
+  architecture: "U-shaped network with skip connections"
+  training_details:
+    optimizer: "SGD"
+    learning_rate: 0.01
+    batch_size: 8
+    epochs: 150
+
+# 检测模型
+faster_rcnn:
+  name: "Faster R-CNN"
+  paper_title: "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+  authors: ["Shaoqing Ren", "Kaiming He", "Ross Girshick", "Jian Sun"]
+  year: 2015
+  conference: "NIPS"
+  metrics:
+    mAP: 0.742
+    mAP50: 0.901
+    mAP75: 0.783
+    inference_time: 52.8
+    memory_usage: 2048
+  implementation_url: "https://github.com/pytorch/vision/tree/main/torchvision/models/detection"
+  architecture: "Two-stage detector with RPN"
+  training_details:
+    optimizer: "SGD"
+    learning_rate: 0.005
+    batch_size: 2
+    epochs: 200
+
+yolo_v5:
+  name: "YOLOv5"
+  paper_title: "YOLOv5: State-of-the-Art Object Detection at Production Scale"
+  authors: ["Glenn Jocher"]
+  year: 2020
+  conference: "arXiv"
+  metrics:
+    mAP: 0.768
+    mAP50: 0.923
+    mAP75: 0.812
+    inference_time: 15.3
+    memory_usage: 1536
+  implementation_url: "https://github.com/ultralytics/yolov5"
+  architecture: "Single-stage detector with CSP backbone"
+  training_details:
+    optimizer: "SGD"
+    learning_rate: 0.01
+    batch_size: 16
+    epochs: 300 

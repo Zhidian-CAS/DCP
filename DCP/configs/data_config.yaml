@@ -1,0 +1,73 @@
+# 数据质量阈值配置
+quality_thresholds:
+  # 图像质量指标
+  image_quality:
+    min_resolution: 512  # 最小分辨率
+    max_noise: 0.1      # 最大噪声水平
+    min_contrast: 0.3   # 最小对比度
+    
+  # 数据完整性指标
+  completeness:
+    min_file_count: 100  # 最小文件数量
+    max_missing_files: 0.05  # 最大缺失文件比例
+    
+  # 数据一致性指标
+  consistency:
+    min_checksum_match: 0.99  # 最小校验和匹配率
+    max_format_variance: 0.1  # 最大格式变化率
+    
+  # 数据分布指标
+  distribution:
+    min_class_balance: 0.8  # 最小类别平衡率
+    max_outlier_ratio: 0.05  # 最大异常值比例
+
+# 数据备份配置
+backup:
+  retention_days: 30  # 备份保留天数
+  max_backups: 10    # 最大备份数量
+  compression: true  # 是否压缩备份
+  
+# 数据版本控制配置
+versioning:
+  auto_increment: true  # 自动递增版本号
+  version_format: "major.minor.patch"  # 版本号格式
+  changelog_required: true  # 是否需要更新日志
+  
+# 日志配置
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "data_manager.log"
+  max_size: 10485760  # 10MB
+  backup_count: 5
+  
+# 数据处理配置
+processing:
+  batch_size: 32
+  num_workers: 4
+  timeout: 300  # 秒
+  retry_attempts: 3
+  
+# 数据验证配置
+validation:
+  check_interval: 3600  # 秒
+  auto_validate: true
+  validation_rules:
+    - name: "format_check"
+      enabled: true
+    - name: "size_check"
+      enabled: true
+    - name: "content_check"
+      enabled: true
+      
+# 数据源类型配置
+source_types:
+  image:
+    allowed_formats: ["jpg", "png", "tiff"]
+    max_file_size: 10485760  # 10MB
+  annotation:
+    allowed_formats: ["json", "xml", "csv"]
+    max_file_size: 5242880  # 5MB
+  metadata:
+    allowed_formats: ["json", "yaml"]
+    max_file_size: 1048576  # 1MB 
