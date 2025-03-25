@@ -27,6 +27,7 @@
     <Compile Include="alt\advanced_pruning_example.py" />
     <Compile Include="alt\demo_segmentation.py" />
     <Compile Include="alt\deploy_segmentation.py" />
+    <Compile Include="configs\config.py" />
     <Compile Include="examples\online_learning_demo.py" />
     <Compile Include="examples\train_with_manager.py" />
     <Compile Include="main.py" />
@@ -90,6 +91,7 @@
     <Folder Include="build\" />
     <Folder Include="build\main\" />
     <Folder Include="build\main\localpycs\" />
+    <Folder Include="configs\" />
     <Folder Include="dist\" />
     <Folder Include="dist\main\" />
     <Folder Include="examples\" />
@@ -121,6 +123,12 @@
     <Content Include="build\main\qt.conf" />
     <Content Include="build\main\warn-main.txt" />
     <Content Include="build\main\xref-main.html" />
+    <Content Include="configs\config.yaml" />
+    <Content Include="configs\dataset_config.yaml" />
+    <Content Include="configs\data_config.yaml" />
+    <Content Include="configs\demo_config.yaml" />
+    <Content Include="configs\sota_models.yaml" />
+    <Content Include="configs\training_config.yaml" />
     <Content Include="dist\main\main.exe" />
     <Content Include="requirements.txt" />
   </ItemGroup>
